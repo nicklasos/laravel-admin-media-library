@@ -5,7 +5,6 @@ Spatie Media-Library extension for Laravel-Admin
 
 ```
 composer require nicklasos/laravel-admin-media-library
-php artisan vendor:publish --provider=Nicklasos\LaravelAdmin\MediaLibrary\MediaLibraryServiceProvider
 ```
 
 ### Usage
