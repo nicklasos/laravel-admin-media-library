@@ -1,14 +1,14 @@
 Media-library extension for Laravel-admin
 ======
 
-###Install
+### Install
 
 ```
 composer require nicklasos/laravel-admin-media-library
 php artisan vendor:publish --provider=Nicklasos\LaravelAdmin\MediaLibrary\MediaLibraryServiceProvider
 ```
 
-###Usage
+### Usage
 ```php
 protected function form()
 {
