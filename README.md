@@ -1,4 +1,4 @@
-Spatie Media-library extension for Laravel-admin
+Spatie Media-Library extension for Laravel-Admin
 ======
 
 ### Install
