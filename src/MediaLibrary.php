@@ -2,8 +2,8 @@
 
 namespace Nicklasos\LaravelAdmin\MediaLibrary;
 
-use App\Admin\Services\MediaLibrary\MediaLibraryFile;
-use App\Admin\Services\MediaLibrary\MediaLibraryMultipleFile;
+use Nicklasos\LaravelAdmin\MediaLibrary\MediaLibraryFile;
+use Nicklasos\LaravelAdmin\MediaLibrary\MediaLibraryMultipleFile;
 use Encore\Admin\Extension;
 use Encore\Admin\Form;
 
