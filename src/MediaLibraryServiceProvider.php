@@ -3,6 +3,8 @@
 namespace Nicklasos\LaravelAdmin\MediaLibrary;
 
 use Illuminate\Support\ServiceProvider;
+use Encore\Admin\Admin;
+use Encore\Admin\Form;
 
 class MediaLibraryServiceProvider extends ServiceProvider
 {
@@ -11,9 +13,10 @@ class MediaLibraryServiceProvider extends ServiceProvider
      */
     public function boot(MediaLibrary $extension)
     {
-        if (! MediaLibrary::boot()) {
-            return ;
-        }
+        Admin::booting(function(){
+            Form::extend('mediaLibrary', MediaLibraryFile::class);
+            Form::extend('multipleMediaLibrary', MediaLibraryMultipleFile::class);
+        });
 
         $this->app->booted(function () {
             if ($this->app->routesAreCached()) {

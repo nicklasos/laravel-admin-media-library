@@ -3,7 +3,7 @@
 namespace Nicklasos\LaravelAdmin\MediaLibrary;
 
 use Encore\Admin\Form\Field\File;
-use Spatie\MediaLibrary\Models\Media;
+#use Spatie\MediaLibrary\Models;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class MediaLibraryFile extends File
@@ -40,12 +40,12 @@ class MediaLibraryFile extends File
 
         $this->form->model()->clearMediaCollection($this->column());
 
-        return $this->uploadMedia($file);
+        return $this->form->saved(function($form)use($file){return $this->uploadMedia($file);});
     }
 
     protected function initialPreviewConfig()
     {
-        $media = Media::where('id', '=', $this->value)->first();
+        $media = $this->form->model()->getMedia($this->column);
 
         return [$this->getPreviewEntry($media)];
     }
@@ -63,8 +63,7 @@ class MediaLibraryFile extends File
         $id = $this->original;
 
         if ($id) {
-            $media = Media::whereId($id)->first();
-            $media->delete();
+            $this->form->model()->clearMediaCollection($this->column());
         }
     }
 }

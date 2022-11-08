@@ -3,7 +3,7 @@
 namespace Nicklasos\LaravelAdmin\MediaLibrary;
 
 use Encore\Admin\Form\NestedForm;
-use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use URL;
 
@@ -42,11 +42,14 @@ trait MediaLibraryBase
 
     public function objectUrl($mediaId)
     {
-        return URL::route('admin.media.download', $mediaId);
+        $media = $this->form
+            ->model()->getMedia($this->column)->first();
+        return $media->getUrl();
     }
 
-    private function getPreviewEntry(Media $media)
+    private function getPreviewEntry(MediaCollection $media)
     {
+        $media = $media->first();
         $type = $this->getMimeType($media->mime_type);
 
         $entry = [
