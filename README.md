@@ -31,14 +31,14 @@ Note: you have to add setPhotosAttribute and setImageAttribute methods to your m
 ```php
 class MyModel extends Model implements HasMedia
 {
-    use HasMediaTrait;
+    use InteractsWithMedia;
 
     public function setPhotosAttribute()
     {
         // you can leave it empty
     }
 
-    public function setImagesAttribute()
+    public function setImageAttribute()
     {
 
     }
